@@ -31,7 +31,10 @@ jobs:
         run: npm install -g @marp-team/marp-cli
 
       - name: Create output directory
-        run: mkdir -p docs
+        run: |
+          # 既存のdocsディレクトリをクリーンアップして、常に最新の状態から開始
+          rm -rf docs
+          mkdir -p docs
 
       - name: Generate HTML from slides
         run: |
@@ -53,80 +56,18 @@ jobs:
               --output "docs/${filename}.pdf"
           done
 
-      - name: Create index page
+      - name: Generate slides metadata
         run: |
-          cat > docs/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="ja">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Broadcast - スライド一覧</title>
-              <style>
-                  body {
-                      font-family: 'Noto Sans JP', sans-serif;
-                      max-width: 800px;
-                      margin: 50px auto;
-                      padding: 20px;
-                      line-height: 1.6;
-                  }
-                  h1 {
-                      color: #6b8fa3;
-                      border-bottom: 2px solid #6b8fa3;
-                      padding-bottom: 10px;
-                  }
-                  .slide-list {
-                      list-style: none;
-                      padding: 0;
-                  }
-                  .slide-item {
-                      margin: 20px 0;
-                      padding: 15px;
-                      border: 1px solid #ddd;
-                      border-radius: 5px;
-                      background: #f9f9f9;
-                  }
-                  .slide-item h2 {
-                      margin-top: 0;
-                      color: #333;
-                  }
-                  .slide-links {
-                      margin-top: 10px;
-                  }
-                  .slide-links a {
-                      display: inline-block;
-                      margin-right: 15px;
-                      padding: 8px 15px;
-                      background: #6b8fa3;
-                      color: white;
-                      text-decoration: none;
-                      border-radius: 3px;
-                  }
-                  .slide-links a:hover {
-                      background: #5a7a8f;
-                  }
-              </style>
-          </head>
-          <body>
-              <h1>📊 スライド一覧</h1>
-              <ul class="slide-list">
-                  <li class="slide-item">
-                      <h2>自己紹介</h2>
-                      <p>sasshuの自己紹介スライド</p>
-                      <div class="slide-links">
-                          <a href="self_introduction_20260101.html">HTML版を見る</a>
-                          <a href="self_introduction_20260101.pdf" download>PDF版をダウンロード</a>
-                      </div>
-                  </li>
-              </ul>
-          </body>
-          </html>
-          EOF
+          node scripts/generate-slides-metadata.js
 
       - name: Copy templates and images
         run: |
           cp -r templates docs/ || true
           cp -r images docs/ || true
+
+      - name: Copy index page
+        run: |
+          cp index.html docs/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
