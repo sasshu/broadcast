@@ -1,0 +1,6 @@
+{
+  "markdown.marp.themes": [
+    "./templates/theme_01.css",
+  ]
+}
+

@@ -1,0 +1,53 @@
+/* @theme theme_01 */
+
+@import 'gaia';
+
+:root {
+    --color-background: #fff;
+    --color-foreground: #333;
+    --color-highlight: #f96;
+    --color-dimmed: #888;
+    --color-border-title: #6b8fa3;
+
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+section.lead h1 {
+    border-bottom: 0.1rem solid var(--color-border-title);
+}
+
+section.lead p {
+    text-align: right;
+    margin-right: 1rem;
+    font-size: 0.8rem;
+}
+
+section:not(.lead, .conclusion) h2 {
+    border-left: 0.5rem solid var(--color-border-title);
+    padding-left: 1rem;
+    font-size: 1rem;
+}
+
+section.conclusion {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section.conclusion p {
+    font-size: 0.8rem;
+}
+
+section.body h3 {
+    font-size: 0.8rem;
+}
+
+section.body h4 {
+    font-size: 0.7rem;
+}
+
+section.body ul, ol, p {
+    font-size: 0.6rem;
+}
