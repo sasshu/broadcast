@@ -4,7 +4,6 @@ Thumbs.db
 
 # 生成されたファイル
 *.pdf
-*.html
 dist/
 build/
 output/
