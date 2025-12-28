@@ -2,6 +2,7 @@
 marp: true
 theme: theme_01
 paginate: true
+footer: '(c) 2026 sasshu'
 ---
 
 <!-- _class: lead -->

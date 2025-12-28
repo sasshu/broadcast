@@ -5,13 +5,17 @@
 @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap');
 
 :root {
-    --color-background: #fff;
+    background: #fff;
     --color-foreground: #333;
     --color-highlight: #f96;
     --color-dimmed: #888;
     --color-border-title: #6b8fa3;
 
     font-family: 'BIZ UDPGothic';
+}
+
+section footer {
+    text-align: center;
 }
 
 section.lead h1 {
@@ -34,6 +38,11 @@ section.conclusion {
 
 section.conclusion p {
     font-size: 0.8rem;
+}
+
+section.body > *:not(footer) {
+    position: relative;
+    bottom: 1.2rem;
 }
 
 section.body h2 {
