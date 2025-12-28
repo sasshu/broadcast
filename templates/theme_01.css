@@ -2,6 +2,8 @@
 
 @import 'gaia';
 
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap');
+
 :root {
     --color-background: #fff;
     --color-foreground: #333;
@@ -9,7 +11,7 @@
     --color-dimmed: #888;
     --color-border-title: #6b8fa3;
 
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'BIZ UDPGothic';
 }
 
 section.lead h1 {
@@ -22,12 +24,6 @@ section.lead p {
     font-size: 0.8rem;
 }
 
-section:not(.lead, .conclusion) h2 {
-    border-left: 0.5rem solid var(--color-border-title);
-    padding-left: 1rem;
-    font-size: 1rem;
-}
-
 section.conclusion {
     text-align: center;
     display: flex;
@@ -38,6 +34,12 @@ section.conclusion {
 
 section.conclusion p {
     font-size: 0.8rem;
+}
+
+section.body h2 {
+    border-left: 0.5rem solid var(--color-border-title);
+    padding-left: 1rem;
+    font-size: 1rem;
 }
 
 section.body h3 {
